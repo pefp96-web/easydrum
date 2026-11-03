@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="이지드럼 매탄 · 수원 성인 드럼 연습실">
+<meta property="og:description" content="수원 매탄동 성인 드럼 연습·교육·공연 공간. 독립 연습실 6실, 원데이 체험 클래스.">
+<meta property="og:image" content="sign-night.jpg">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head><body>
+<title>이지드럼 매탄</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="수원 매탄동 이지드럼. 성인을 위한 드럼 연습·교육·공연·커뮤니티 공간. 독립 연습실 6개, 공연용·촬영용 드럼, 3년 이상 운영.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: shadcn/ui 문법(zinc 무채색 + 1px 보더 + 절제된 라운드) · 다크 우선(무대 조명) · 히어로 오른쪽에 16스텝 드럼 그루브 그리드 · 사진은 벤토 그리드 */
+:root{
+  --bg:#09090B; --card:#111113; --muted-bg:#18181B; --fg:#FAFAFA; --muted:#A1A1AA; --border:#27272A; --border-2:#3F3F46;
+  --accent:#F5A524; --accent-fg:#1A1203; --accent-soft:rgba(245,165,36,.12); --ring:#F5A524;
+  --primary:#FAFAFA; --primary-fg:#09090B;
+  --sans:"Geist","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px; --r-s:6px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#FFFFFF; --card:#FFFFFF; --muted-bg:#F4F4F5; --fg:#09090B; --muted:#71717A; --border:#E4E4E7; --border-2:#D4D4D8;
+  --accent:#C2710C; --accent-fg:#FFFFFF; --accent-soft:rgba(194,113,12,.10); --ring:#C2710C;
+  --primary:#09090B; --primary-fg:#FAFAFA; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#FFFFFF; --card:#FFFFFF; --muted-bg:#F4F4F5; --fg:#09090B; --muted:#71717A; --border:#E4E4E7; --border-2:#D4D4D8;
+  --accent:#C2710C; --accent-fg:#FFFFFF; --accent-soft:rgba(194,113,12,.10); --ring:#C2710C;
+  --primary:#09090B; --primary-fg:#FAFAFA; color-scheme:light}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1rem;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:var(--r-s)}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.025em}
+h1,h2{font-weight:800}
+h2{font-size:clamp(1.6rem,1.1rem + 2vw,2.5rem);line-height:1.2}
+h3{font-size:1.05rem;font-weight:700;line-height:1.45;letter-spacing:-.01em}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.muted{color:var(--muted)}
+.lead{font-size:1.08rem;color:var(--muted);max-width:40rem}
+.skip{position:absolute;left:16px;top:-60px;background:var(--primary);color:var(--primary-fg);padding:10px 14px;border-radius:var(--r-s);z-index:100;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* badge (shadcn Badge) */
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:500;color:var(--muted);background:var(--card);width:fit-content}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.badge.accent{border-color:transparent;background:var(--accent-soft);color:var(--accent)}
+.label{font-family:var(--mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+@supports not (background:color-mix(in srgb,red,blue)){header{background:var(--bg)}}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
+.logo svg{flex:none}
+.nav{display:flex;gap:2px;align-items:center}
+.nav a{text-decoration:none;color:var(--muted);font-size:.88rem;font-weight:500;padding:8px 10px;border-radius:var(--r-s);min-height:40px;display:inline-flex;align-items:center;transition:color .15s,background .15s}
+.nav a:hover{color:var(--fg);background:var(--muted-bg)}
+.nav .btn{margin-left:8px;color:var(--primary-fg)}
+.nav .btn:hover{color:var(--primary-fg);background:var(--primary);opacity:.9}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--border);border-radius:var(--r-s);background:var(--card)}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{width:16px;height:1.5px;background:var(--fg);position:relative;display:block}
+.menu summary span::before,.menu summary span::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--fg)}
+.menu summary span::before{top:-5px}.menu summary span::after{top:5px}
+.menu[open] summary span{background:transparent}
+.menu[open] summary span::before{top:0;transform:rotate(45deg)}.menu[open] summary span::after{top:0;transform:rotate(-45deg)}
+.menu .sheet{position:absolute;right:0;top:calc(100% + 8px);width:min(280px,calc(100vw - 32px));background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:6px;display:grid;box-shadow:0 16px 40px -12px rgba(0,0,0,.5)}
+.menu .sheet a{text-decoration:none;padding:10px 12px;border-radius:var(--r-s);font-size:.95rem;font-weight:500;min-height:44px;display:flex;align-items:center}
+.menu .sheet a:hover{background:var(--muted-bg)}
+.menu .sheet .btn{margin-top:4px;justify-content:center}
+
+/* buttons (shadcn Button) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:var(--r-s);font:inherit;font-size:.93rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s,opacity .15s;white-space:nowrap}
+.btn-lg{min-height:46px;padding:0 22px;font-size:1rem}
+.btn-primary{background:var(--primary);color:var(--primary-fg)}
+.btn-primary:hover{opacity:.88}
+.btn-accent{background:var(--accent);color:var(--accent-fg)}
+.btn-accent:hover{opacity:.9}
+.btn-outline{background:transparent;color:var(--fg);border-color:var(--border-2)}
+.btn-outline:hover{background:var(--muted-bg)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);opacity:.55;pointer-events:none}
+.hero::after{content:"";position:absolute;top:-30%;left:50%;width:min(900px,120vw);aspect-ratio:2/1;transform:translateX(-50%);background:radial-gradient(closest-side,var(--accent-soft),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,64px);align-items:center;padding-block:clamp(48px,8vw,104px)}
+.hero h1{font-size:clamp(2.3rem,1.3rem + 4.4vw,4.4rem);line-height:1.08;letter-spacing:-.04em;margin-top:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:20px}
+.actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.offer{margin-top:26px;border:1px solid var(--border-2);border-radius:var(--r);background:var(--card);padding:20px;display:grid;gap:14px;max-width:34rem;box-shadow:0 0 0 4px var(--accent-soft)}
+.offer-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.offer-title{font-size:clamp(1.15rem,1rem + .6vw,1.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.35}
+.offer-cta{display:flex;flex-wrap:wrap;gap:8px}
+.offer-cta .btn{flex:1 1 180px}
+.howto{display:grid;gap:6px;border-top:1px dashed var(--border-2);padding-top:12px}
+.howto b{color:var(--accent);font-weight:500}
+.msg{font-size:.86rem;color:var(--muted);background:var(--muted-bg);border-radius:var(--r-s);padding:10px 12px;user-select:all}
+.dock{display:none}
+@media (max-width:960px){
+  .dock{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--border);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .dock .btn{flex:1}
+  body{padding-bottom:76px}
+  .totop{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+
+/* groove card */
+.groove{border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden;min-width:0}
+.groove-photo{position:relative;aspect-ratio:16/11;max-width:100%;overflow:hidden;border-bottom:1px solid var(--border)}
+.groove-photo img{width:100%;height:100%;object-fit:cover}
+.groove-photo .cap{position:absolute;left:12px;bottom:12px}
+.cap{display:inline-flex;align-items:center;gap:6px;background:rgba(9,9,11,.72);color:#FAFAFA;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-size:.75rem;font-weight:500;padding:4px 10px;border-radius:999px}
+.groove-body{padding:16px 16px 18px;display:grid;gap:12px}
+.groove-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.groove-head b{font-size:.9rem;font-weight:600}
+.grid16{display:grid;grid-template-columns:28px repeat(16,minmax(0,1fr));gap:4px;align-items:center}
+.grid16 .lane{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.grid16 i{display:block;aspect-ratio:1;border-radius:3px;background:var(--muted-bg);border:1px solid var(--border)}
+.grid16 i.on{background:var(--fg);border-color:var(--fg)}
+.grid16 i.acc{background:var(--accent);border-color:var(--accent)}
+.grid16 i.beat{border-color:var(--border-2)}
+.grid16 i.hit{animation:hit .5s ease-out}
+@keyframes hit{0%{transform:scale(1.25);box-shadow:0 0 0 4px var(--accent-soft)}100%{transform:scale(1);box-shadow:none}}
+.counts{display:grid;grid-template-columns:28px repeat(4,1fr);font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.groove-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.play{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border-radius:var(--r-s);border:1px solid var(--border-2);background:transparent;color:var(--fg);font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}
+.play:hover{background:var(--muted-bg)}
+
+/* stats */
+.stats{border-bottom:1px solid var(--border)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats div{padding:26px 20px;border-left:1px solid var(--border);display:grid;gap:2px}
+.stats div:first-child{border-left:0;padding-left:0}
+.stats b{font-size:clamp(1.6rem,1.2rem + 1.4vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats span{font-size:.86rem;color:var(--muted)}
+
+/* sections */
+section{padding-block:clamp(64px,9vw,112px);scroll-margin-top:64px;border-bottom:1px solid var(--border)}
+.head{display:grid;gap:12px;max-width:44rem;margin-bottom:clamp(28px,4vw,48px)}
+.head.center{margin-inline:auto;text-align:center;justify-items:center}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,64px);align-items:start}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;min-width:0}
+.card p{color:var(--muted);font-size:.94rem}
+.prose{display:grid;gap:14px}
+.prose p{color:var(--muted)}
+.check{display:grid;gap:8px}
+.check li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;font-size:.94rem}
+.check li::before{content:"";width:16px;height:16px;margin-top:.3em;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23F5A524' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.photo{margin:0;position:relative;border-radius:var(--r);overflow:hidden;background:var(--muted-bg);border:1px solid var(--border);min-width:0;max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.photo:hover img{transform:scale(1.03)}
+.photo .cap{position:absolute;left:10px;bottom:10px}
+
+/* why */
+.limbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.limbs li{border:1px solid var(--border);border-radius:var(--r);background:var(--card);padding:16px 10px 14px;display:grid;gap:6px;text-align:center}
+.limbs b{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+.limbs span{font-size:.78rem;color:var(--muted);line-height:1.45}
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.formula span{border:1px solid var(--border-2);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.92rem}
+.formula i{font-style:normal;font-family:var(--mono);color:var(--accent)}
+.note{margin-top:20px;border:1px solid var(--border);border-radius:var(--r);background:var(--muted-bg);padding:18px;display:grid;gap:6px}
+.note p{color:var(--muted);font-size:.94rem}
+
+/* about */
+.motto{font-family:var(--mono);font-weight:500;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.35;letter-spacing:-.01em}
+.motto span{display:block;color:var(--accent)}
+
+/* space */
+.kit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.kit .card{display:grid;gap:6px}
+.kit b{font-size:2.6rem;font-weight:800;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.feat .card{display:grid;gap:6px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:12px}
+.bento .w2{grid-column:span 2}
+.bento .h2{grid-row:span 2}
+
+/* education */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.steps .card{display:grid;gap:10px;align-content:start}
+.steps .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.steps .num{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+
+/* hours */
+.hours{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.hours .card{display:grid;gap:12px;align-content:start}
+.time{font-family:var(--mono);font-weight:500;font-size:clamp(1.6rem,1.2rem + 1.4vw,2.2rem);letter-spacing:-.02em;color:var(--fg);font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{border:1px solid var(--border-2);border-radius:999px;padding:3px 11px;font-size:.84rem}
+
+/* stage */
+.ticket{border:1px solid var(--border);border-radius:var(--r);padding:26px;background:linear-gradient(180deg,var(--accent-soft),transparent 70%),var(--card);display:grid;gap:12px}
+.ticket h3{font-size:1.45rem;font-weight:800;letter-spacing:-.03em}
+.ticket p{color:var(--muted)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.86rem}
+.flow span{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-s);padding:3px 10px}
+.flow i{font-style:normal;color:var(--accent);font-family:var(--mono)}
+.subhead{margin:56px 0 18px;display:grid;gap:8px}
+.comm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.comm li{border:1px solid var(--border);border-radius:var(--r-s);padding:12px 14px;font-size:.9rem;background:var(--card)}
+.strip{display:grid;grid-template-columns:2fr 1fr 1fr 2fr;grid-auto-rows:260px;gap:12px;margin-top:16px}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.person{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--muted-bg);border:1px solid var(--border-2);display:grid;place-items:center;font-weight:800;font-size:1.05rem;letter-spacing:-.02em;color:var(--accent)}
+.person .role{font-size:.82rem;color:var(--muted)}
+.person h3{font-size:1.3rem;font-weight:800;margin-top:2px}
+.person .bio{margin-top:10px}
+.person .check{margin-top:14px}
+.pending{font-size:.8rem;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px dashed var(--border-2)}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.svc .card{display:grid;gap:10px;align-content:start;grid-template-rows:auto 1fr auto}
+.svc .ask{padding-top:12px;border-top:1px solid var(--border);font-size:.86rem;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.svc .ask .more::after{content:" →";font-family:var(--mono)}
+.orgs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.orgs .card{display:grid;gap:6px}
+.terms{margin-top:14px;font-size:.9rem;color:var(--muted)}
+.osteps{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.osteps li{border:1px solid var(--border);border-radius:var(--r-s);padding:14px;font-size:.9rem;display:grid;gap:4px;background:var(--card)}
+.osteps .mono{color:var(--accent)}
+.osteps span{color:var(--muted)}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rules li{border:1px solid var(--border);border-radius:var(--r-s);padding:12px 14px;font-size:.9rem;display:flex;gap:10px;align-items:baseline}
+.rules li .mono{color:var(--accent)}
+
+/* faq (shadcn Accordion) */
+.faq{max-width:48rem;margin-inline:auto;border-top:1px solid var(--border)}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{cursor:pointer;padding:18px 40px 18px 0;font-weight:600;list-style:none;position:relative;min-height:56px}
+.faq summary:hover{text-decoration:underline;text-underline-offset:4px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq .a{padding:0 0 18px;color:var(--muted)}
+
+/* channels */
+.chan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.chan a{display:grid;gap:4px;border:1px solid var(--border);border-radius:var(--r);padding:18px;background:var(--card);text-decoration:none;transition:border-color .15s,background .15s}
+.chan a:hover{border-color:var(--border-2);background:var(--muted-bg)}
+.chan b{font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.chan b::after{content:"↗";color:var(--muted);font-family:var(--mono)}
+.chan small{color:var(--muted);font-size:.86rem}
+
+/* contact */
+.info{display:grid;margin:24px 0 0;border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden}
+.info .row{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:14px 18px;border-top:1px solid var(--border)}
+.info .row:first-child{border-top:0}
+.info dt{font-size:.84rem;color:var(--muted)}
+.info dd{margin:0;min-width:0}
+.copy{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.copy b{font-family:var(--mono);font-weight:500;font-size:1.02rem;font-variant-numeric:tabular-nums}
+.copy button{min-height:30px;padding:0 10px;border-radius:var(--r-s);border:1px solid var(--border-2);background:transparent;color:var(--fg);font:inherit;font-size:.78rem;font-weight:600;cursor:pointer}
+.copy button:hover{background:var(--muted-bg)}
+.entrance{aspect-ratio:3/4;max-height:620px}
+
+footer{padding-block:32px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem;color:var(--muted)}
+footer b{color:var(--fg)}
+.totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--border-2);text-decoration:none;font-family:var(--mono);z-index:40}
+
+@media (max-width:960px){
+  .nav{display:none}.menu{display:block}
+  .hero .wrap,.two{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .stats div:nth-child(3){border-left:0;padding-left:0}
+  .stats div:nth-child(n+3){border-top:1px solid var(--border)}
+  .kit,.feat,.steps,.svc,.orgs,.chan{grid-template-columns:repeat(2,1fr)}
+  .comm,.rules,.osteps{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .strip{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .strip .w2{grid-column:span 2}
+  .people{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .kit,.feat,.steps,.svc,.orgs,.chan,.hours,.comm,.rules,.osteps{grid-template-columns:1fr}
+  .limbs{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .limbs li{padding:12px 4px}
+  .limbs span{font-size:.7rem}
+  .bento{grid-auto-rows:150px}
+  .bento .h2{grid-row:span 1}
+  .strip{grid-auto-rows:170px}
+  .info .row{grid-template-columns:1fr;gap:2px}
+  .grid16{gap:3px;grid-template-columns:24px repeat(16,minmax(0,1fr))}
+  .counts{grid-template-columns:24px repeat(4,1fr)}
+}
+
+/* play: drum kit */
+.play-sec{background:var(--card)}
+.kit-stage{position:relative;border:1px solid var(--border);border-radius:var(--r);background:radial-gradient(ellipse 60% 70% at 50% 100%,var(--accent-soft),transparent 70%),var(--bg);padding:12px;overflow:hidden}
+.kitsvg{display:block;width:100%;height:auto;max-width:860px;margin:0 auto;touch-action:manipulation;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cline x1='5' y1='5' x2='33' y2='33' stroke='%23000' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='5' y1='5' x2='33' y2='33' stroke='%23E3B66C' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='5' cy='5' r='3.2' fill='%23F5D9A8' stroke='%23000'/%3E%3C/svg%3E") 4 4,pointer}
+.kitsvg .st{stroke:var(--border-2);stroke-width:4;stroke-linecap:round;fill:none}
+.kitsvg .shell{fill:var(--muted-bg);stroke:var(--border-2);stroke-width:2}
+.kitsvg .head{fill:var(--card);stroke:var(--fg);stroke-width:2;transition:fill .4s ease}
+.kitsvg .rim{fill:none;stroke:var(--fg);stroke-width:3}
+.kitsvg .cymf{fill:color-mix(in srgb,var(--accent) 55%,var(--card));stroke:var(--accent);stroke-width:1.5;transition:fill .5s ease}
+.kitsvg .bell{fill:var(--accent)}
+.kitsvg .logo{fill:var(--muted);font-family:var(--mono);font-size:22px;letter-spacing:4px;font-weight:500}
+.kitsvg .key{fill:var(--muted);font-family:var(--mono);font-size:13px}
+.kitsvg .pc{transform-box:fill-box;transform-origin:center;outline:none}
+.kitsvg .pc:focus-visible .head,.kitsvg .pc:focus-visible .cymf{stroke:var(--ring);stroke-width:4}
+.kitsvg .pc.hit .head{fill:var(--accent);transition:none}
+.kitsvg .pc.hit .cymf{fill:var(--fg);transition:none}
+.kitsvg .drum.hit{animation:thump .2s ease-out}
+.kitsvg .cym.hit{animation:wob .7s ease-out}
+.kitsvg .hat.hit{animation:clap .16s ease-out}
+.kitsvg .kick.hit{animation:boom .22s ease-out}
+.kitsvg .ripple{fill:none;stroke:var(--accent);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ripple .55s ease-out forwards;pointer-events:none}
+@keyframes thump{0%{transform:translateY(5px) scale(.97,.94)}100%{transform:none}}
+@keyframes wob{0%{transform:rotate(-8deg)}25%{transform:rotate(6deg)}50%{transform:rotate(-3deg)}75%{transform:rotate(1.5deg)}100%{transform:none}}
+@keyframes clap{0%{transform:translateY(5px)}100%{transform:none}}
+@keyframes boom{0%{transform:scale(.965)}60%{transform:scale(1.01)}100%{transform:none}}
+@keyframes ripple{0%{transform:scale(1);opacity:.8}100%{transform:scale(5);opacity:0}}
+.kit-bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin-top:14px}
+.kit-bar .left{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sound{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border-2);background:var(--card);color:var(--fg);font:inherit;font-size:.86rem;font-weight:600;cursor:pointer}
+.sound i{width:8px;height:8px;border-radius:50%;background:var(--border-2)}
+.sound[aria-pressed="true"] i{background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.hits b{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--accent)}
+.keys{display:flex;flex-wrap:wrap;gap:6px}
+.keys span{font-family:var(--mono);font-size:.74rem;color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:2px 7px}
+.keys b{color:var(--fg);font-weight:500}
+
+/* tooltip */
+#tip{position:fixed;z-index:120;width:max-content;left:0;top:0;max-width:min(260px,calc(100vw - 32px));background:var(--fg);color:var(--bg);font-size:.8rem;font-weight:500;line-height:1.45;padding:7px 11px;border-radius:7px;pointer-events:none;box-shadow:0 8px 24px -8px rgba(0,0,0,.5)}
+#tip::after{content:"";position:absolute;left:var(--ax,50%);top:100%;border:6px solid transparent;border-top-color:var(--fg);transform:translateX(-50%)}
+#tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--fg)}
+.go{cursor:pointer;transition:border-color .15s,transform .15s}
+.go:hover{border-color:var(--accent)!important;transform:translateY(-2px)}
+.go .more{font-size:.82rem;font-weight:600;color:var(--accent)}
+.photo,.groove-photo{cursor:zoom-in}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:110;background:rgba(9,9,11,.92);display:grid;grid-template-rows:auto 1fr auto;padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));color:#FAFAFA}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-top span{font-family:var(--mono);font-size:.8rem;color:#A1A1AA}
+.lb figure{margin:0;display:grid;place-items:center;min-height:0;position:relative}
+.lb img{max-width:100%;max-height:calc(100vh - 180px);max-height:calc(100dvh - 180px);border-radius:8px;object-fit:contain}
+.lb figcaption{text-align:center;font-weight:600;margin-top:10px}
+.lb-nav{display:flex;justify-content:center;gap:10px}
+.lb button{min-height:42px;min-width:42px;padding:0 14px;border-radius:999px;border:1px solid #3F3F46;background:#18181B;color:#FAFAFA;font:inherit;font-weight:600;cursor:pointer}
+.lb button:hover{background:#27272A}
+
+/* detail pages */
+.page{position:fixed;inset:0;z-index:90;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(32px + env(safe-area-inset-bottom,0px))}
+.page-bar{position:sticky;top:0;z-index:2;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.page-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px}
+.crumb{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.page-body{padding-block:clamp(28px,5vw,56px);display:grid;gap:28px}
+.page-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start}
+.page-hero h1{font-size:clamp(2rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;letter-spacing:-.04em;font-weight:800;margin-top:12px}
+.page-hero .lead{margin-top:14px}
+.page-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.page-photos .photo{aspect-ratio:4/3}
+.page-photos .photo:first-child{grid-column:span 2;aspect-ratio:16/10}
+.facts-list{display:grid;gap:10px;margin-top:20px}
+.page-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.page-note{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--border-2);padding-top:12px;margin-top:20px}
+.related{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.related a{border:1px solid var(--border);border-radius:var(--r);background:var(--card);padding:14px 16px;text-decoration:none;display:grid;gap:2px}
+.related a:hover{border-color:var(--accent)}
+.related small{color:var(--muted);font-size:.82rem}
+body.lock{overflow:hidden}
+@media (max-width:760px){.page-hero{grid-template-columns:1fr}.related{grid-template-columns:1fr}.keys{display:none}}
+
+
+.vol{display:inline-flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted)}
+.vol input{width:110px;accent-color:var(--accent)}
+.vol b{font-family:var(--mono);font-weight:500;color:var(--fg);min-width:3.2em;font-variant-numeric:tabular-nums}
+/* rhythm game */
+.game{border:1px solid var(--border);border-radius:var(--r);background:var(--card);overflow:hidden;max-width:760px;margin:0 auto}
+.g-hud{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.g-stat{padding:12px 14px;display:grid;gap:2px;border-left:1px solid var(--border)}
+.g-stat:first-child{border-left:0}
+.g-stat span{font-size:.75rem;color:var(--muted)}
+.g-stat b{font-family:var(--mono);font-weight:500;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.g-stage{position:relative;background:var(--bg)}
+#gcv{display:block;width:100%;height:clamp(340px,58vh,480px);touch-action:none}
+.g-over{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.g-card{width:min(440px,100%);border:1px solid var(--border-2);border-radius:var(--r);background:var(--card);padding:20px;display:grid;gap:14px;text-align:center;justify-items:center}
+.g-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%}
+.g-opt{display:grid;gap:2px;padding:10px 8px;border-radius:var(--r-s);border:1px solid var(--border-2);background:transparent;color:var(--fg);font:inherit;cursor:pointer}
+.g-opt b{font-size:.9rem}
+.g-opt small{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.g-opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.g-grade{font-size:4rem;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--accent)}
+.g-break{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.g-break span{font-family:var(--mono);font-size:.78rem;border:1px solid var(--border);border-radius:999px;padding:3px 10px}
+.g-cta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.g-pads{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+.g-pads button{min-height:64px;border:0;border-left:1px solid var(--border);background:var(--card);color:var(--fg);font:inherit;font-weight:600;font-size:.9rem;display:grid;place-items:center;gap:0;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.g-pads button:first-child{border-left:0}
+.g-pads button b{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--muted)}
+.g-pads button.on{background:var(--accent-soft)}
+@media (max-width:600px){.g-hud{grid-template-columns:repeat(2,1fr)}.g-stat:nth-child(3){border-left:0}.g-stat:nth-child(n+3){border-top:1px solid var(--border)}.g-opts{grid-template-columns:1fr}.vol input{width:90px}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header><div class="wrap">
+  <a class="logo" href="#top" aria-label="이지드럼 홈">
+    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><ellipse cx="13" cy="9" rx="10" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 9v8c0 2.2 4.5 4 10 4s10-1.8 10-4V9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 3l5 6M19 2l-4 7" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    이지드럼
+  </a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="#play" data-tip="화면 속 드럼을 직접 쳐 보세요">드럼 쳐보기</a><a href="#game" data-tip="노트에 맞춰 치는 8비트 챌린지">리듬게임</a><a href="#why">왜 드럼인가</a><a href="#space">공간</a><a href="#edu">교육</a><a href="#stage">공연·커뮤니티</a><a href="#services">프로그램</a><a href="#faq">FAQ</a><a class="btn btn-primary" href="#offer">체험 신청</a>
+  </nav>
+  <details class="menu">
+    <summary aria-label="메뉴 열기"><span></span></summary>
+    <nav class="sheet" aria-label="모바일 메뉴">
+      <a href="#play">드럼 쳐보기</a><a href="#game">리듬게임</a><a href="#why">왜 드럼인가</a><a href="#about">소개</a><a href="#space">공간</a><a href="#edu">교육</a><a href="#stage">공연·커뮤니티</a><a href="#people">강사진</a><a href="#services">프로그램</a><a href="#faq">자주 묻는 질문</a><a class="btn btn-primary" href="#offer">체험 신청</a>
+    </nav>
+  </details>
+</div></header>
+
+<main id="main">
+<div class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="badge"><span class="dot"></span>수원 매탄동 · 성인 드럼 음악문화공간</span>
+    <h1>어른의 취미는<br>이제 <em>드럼</em>입니다</h1>
+    <p class="lead">배우고, 연습하고, 쉬고, 사람을 만나고, 때로는 내 무대에 섭니다. 3년 넘게 성인 회원들과 함께 운영해 온 이지드럼입니다.</p>
+    <div class="offer" id="offer">
+      <div class="offer-top"><span class="badge accent">드럼 처음이세요?</span><span class="mono">원데이 체험 클래스</span></div>
+      <p class="offer-title">스틱 처음 잡는 날,<br>8비트 리듬 한 줄까지 칩니다</p>
+      <ul class="check">
+        <li>악기·스틱 없이 빈손으로 오셔도 됩니다</li>
+        <li>등록하면 기초교육은 추가 레슨비 없음</li>
+        <li>오전 10시부터 밤 10시까지, 퇴근 후도 가능</li>
+      </ul>
+      <div class="offer-cta">
+        <button class="btn btn-accent btn-lg" type="button" id="kakaoGo">카톡으로 체험 신청</button>
+        <button class="btn btn-outline btn-lg" type="button" data-copy="tel">전화번호 복사</button>
+      </div>
+      <div class="howto">
+        <p class="mono" id="howtoText">카카오톡에서 <b>CH6471</b> 검색 → 아래 문구 붙여넣기</p>
+        <p class="msg" id="msg">안녕하세요, 홈페이지 보고 원데이 체험 문의드려요. 희망 요일: 시간대(오전/오후/저녁): 드럼 경험(처음/조금):</p>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span class="mono">매영로45번길 7 · B1</span>
+      <span class="mono">10:00 – 22:00</span>
+      <span class="mono">카카오톡 CH6471</span>
+    </div>
+  </div>
+
+  <div class="groove" aria-label="이지드럼 입구 사진과 기본 8비트 리듬">
+    <figure class="groove-photo" style="margin:0"><img src="sign-night.jpg" alt="밤에 불이 켜진 이지드럼 간판과 입구" width="1050" height="1400" fetchpriority="high"><figcaption class="cap">매영로45번길 7, 지하 1층</figcaption></figure>
+    <div class="groove-body">
+      <div class="groove-head"><b>첫날 배우는 리듬 · 8비트</b><span class="mono">4/4 · ♩=96</span></div>
+      <div class="grid16" id="grid" role="img" aria-label="하이햇은 8분음표마다, 스네어는 2박과 4박, 베이스드럼은 1박과 3박에 치는 기본 8비트 패턴"></div>
+      <div class="counts" aria-hidden="true"><span></span><span>1</span><span>2</span><span>3</span><span>4</span></div>
+      <div class="groove-foot"><span class="muted" style="font-size:.84rem">음계를 몰라도 이 한 줄로 시작합니다.</span><button class="play" id="play" type="button" aria-pressed="false">▶ 패턴 재생</button></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="stats" aria-label="이지드럼 한눈에"><div class="wrap">
+  <div><b>3년+</b><span>성인 회원과 함께 운영</span></div>
+  <div><b>8대</b><span>설치된 드럼</span></div>
+  <div><b>6실</b><span>독립 드럼 연습실</span></div>
+  <div><b>분기 1회</b><span>회원 미니 음악회</span></div>
+</div></div>
+
+<section id="play" class="play-sec"><div class="wrap">
+  <div class="head center">
+    <span class="label">Try It</span>
+    <h2>마우스를 올리면 드럼이 울립니다</h2>
+    <p class="lead">휴대폰은 손가락으로 두드려 보세요. 화면을 한 번 누르면 소리가 켜집니다.</p>
+  </div>
+  <div class="kit-stage">
+    <svg class="kitsvg" id="kit" viewBox="0 0 800 470" role="group" aria-label="드럼 세트. 각 악기에 마우스를 올리거나 눌러서 칠 수 있습니다">
+      <g aria-hidden="true">
+        <line class="st" x1="190" y1="122" x2="190" y2="452"/><line class="st" x1="190" y1="452" x2="160" y2="466"/><line class="st" x1="190" y1="452" x2="220" y2="466"/>
+        <line class="st" x1="630" y1="155" x2="630" y2="300"/>
+        <line class="st" x1="92" y1="236" x2="92" y2="452"/><line class="st" x1="92" y1="452" x2="66" y2="466"/><line class="st" x1="92" y1="452" x2="118" y2="466"/>
+        <line class="st" x1="212" y1="364" x2="196" y2="452"/><line class="st" x1="212" y1="364" x2="232" y2="452"/>
+        <line class="st" x1="580" y1="420" x2="574" y2="460"/><line class="st" x1="680" y1="420" x2="686" y2="460"/>
+        <line class="st" x1="330" y1="400" x2="318" y2="458"/><line class="st" x1="470" y1="400" x2="482" y2="458"/>
+      </g>
+      <g class="pc cym" data-k="crash" tabindex="0" data-tip="크래시 심벌 · 곡이 시작할 때 '쾅'">
+        <ellipse class="cymf" cx="190" cy="120" rx="98" ry="15"/><ellipse class="bell" cx="190" cy="116" rx="14" ry="4"/>
+      </g>
+      <g class="pc cym" data-k="ride" tabindex="0" data-tip="라이드 심벌 · 리듬을 '띵띵' 이어 갈 때">
+        <ellipse class="cymf" cx="630" cy="152" rx="104" ry="16"/><ellipse class="bell" cx="630" cy="148" rx="15" ry="4"/>
+      </g>
+      <g class="pc kick" data-k="kick" tabindex="0" data-tip="베이스드럼 · 오른발 페달로 '쿵'">
+        <circle class="shell" cx="400" cy="336" r="118"/><circle class="head" cx="400" cy="336" r="106"/><circle class="rim" cx="400" cy="336" r="106"/>
+        <text class="logo" x="400" y="344" text-anchor="middle">EASY DRUM</text>
+      </g>
+      <g class="pc drum" data-k="tom1" tabindex="0" data-tip="하이탐 · 필인의 시작">
+        <rect class="shell" x="278" y="212" width="104" height="56"/><ellipse class="shell" cx="330" cy="268" rx="52" ry="13"/><ellipse class="head" cx="330" cy="212" rx="52" ry="14"/>
+      </g>
+      <g class="pc drum" data-k="tom2" tabindex="0" data-tip="미드탐 · 하이탐보다 한 톤 낮게">
+        <rect class="shell" x="418" y="212" width="104" height="56"/><ellipse class="shell" cx="470" cy="268" rx="52" ry="13"/><ellipse class="head" cx="470" cy="212" rx="52" ry="14"/>
+      </g>
+      <g class="pc hat" data-k="hat" tabindex="0" data-tip="하이햇 · 8비트의 '츠츠츠츠'">
+        <ellipse class="cymf" cx="92" cy="242" rx="64" ry="10"/><ellipse class="cymf" cx="92" cy="232" rx="64" ry="10"/><ellipse class="bell" cx="92" cy="229" rx="10" ry="3"/>
+      </g>
+      <g class="pc drum" data-k="snare" tabindex="0" data-tip="스네어 · 2박과 4박의 '탁'">
+        <rect class="shell" x="146" y="318" width="132" height="40"/><ellipse class="shell" cx="212" cy="358" rx="66" ry="15"/><ellipse class="head" cx="212" cy="318" rx="66" ry="16"/>
+      </g>
+      <g class="pc drum" data-k="floor" tabindex="0" data-tip="플로어탐 · 가장 낮고 묵직한 '둥'">
+        <rect class="shell" x="562" y="326" width="136" height="94"/><ellipse class="shell" cx="630" cy="420" rx="68" ry="16"/><ellipse class="head" cx="630" cy="326" rx="68" ry="17"/>
+      </g>
+      <g aria-hidden="true">
+        <text class="key" x="92" y="276" text-anchor="middle">A</text><text class="key" x="212" y="394" text-anchor="middle">S</text>
+        <text class="key" x="330" y="296" text-anchor="middle">D</text><text class="key" x="470" y="296" text-anchor="middle">F</text>
+        <text class="key" x="630" y="446" text-anchor="middle">J</text><text class="key" x="630" y="182" text-anchor="middle">K</text>
+        <text class="key" x="190" y="150" text-anchor="middle">L</text><text class="key" x="400" y="468" text-anchor="middle">Space</text>
+      </g>
+    </svg>
+  </div>
+  <div class="kit-bar">
+    <div class="left">
+      <button class="sound" id="soundBtn" type="button" aria-pressed="false" data-tip="소리를 켜거나 끕니다"><i aria-hidden="true"></i><span>소리 꺼짐</span></button>
+      <button class="sound" id="hallBtn" type="button" aria-pressed="true" data-tip="큰 공연장처럼 소리가 울리게 합니다"><i aria-hidden="true"></i><span>공연장 울림 켜짐</span></button>
+      <label class="vol" for="volSlider" data-tip="전체 소리 크기"><span>볼륨</span><input id="volSlider" type="range" min="20" max="150" step="5" value="100"><b id="volOut">100%</b></label>
+      <span class="hits muted" style="font-size:.88rem">친 횟수 <b id="hitCount">0</b></span>
+    </div>
+    <div class="keys" aria-label="키보드로 치기"><span><b>A</b> 하이햇</span><span><b>S</b> 스네어</span><span><b>D F</b> 탐</span><span><b>J</b> 플로어</span><span><b>K L</b> 심벌</span><span><b>Space</b> 베이스</span></div>
+  </div>
+  <div class="actions" style="justify-content:center;margin-top:22px"><a class="btn btn-accent btn-lg" href="#offer" data-tip="첫 화면의 체험 신청 카드로 이동">진짜 드럼으로 쳐 보기</a></div>
+</div></section>
+
+<section id="game"><div class="wrap">
+  <div class="head center">
+    <span class="label">Rhythm Game</span>
+    <h2>8비트 챌린지</h2>
+    <p class="lead">내려오는 노트가 선에 닿을 때 맞춰 치세요. 키보드는 A·S·D·Space, 휴대폰은 아래 패드를 두드리면 됩니다.</p>
+  </div>
+  <div class="game" id="gameBox">
+    <div class="g-hud">
+      <div class="g-stat"><span>점수</span><b id="gScore">0</b></div>
+      <div class="g-stat"><span>콤보</span><b id="gCombo">0</b></div>
+      <div class="g-stat"><span>정확도</span><b id="gAcc">–</b></div>
+      <div class="g-stat"><span>최고 기록</span><b id="gBest">–</b></div>
+    </div>
+    <div class="g-stage">
+      <canvas id="gcv" aria-label="리듬게임 화면. 4개 레인에서 노트가 내려옵니다"></canvas>
+      <div class="g-over" id="gOver">
+        <div class="g-card" id="gStartCard">
+          <p class="label">곡 고르기</p>
+          <div class="g-opts" role="radiogroup" aria-label="곡 선택">
+            <button type="button" class="g-opt" data-song="easy" aria-pressed="true"><b>첫 8비트</b><small>80 BPM · 입문</small></button>
+            <button type="button" class="g-opt" data-song="rock" aria-pressed="false"><b>록 8비트 + 필인</b><small>100 BPM · 중급</small></button>
+            <button type="button" class="g-opt" data-song="fast" aria-pressed="false"><b>무대 피날레</b><small>124 BPM · 고수</small></button>
+          </div>
+          <button type="button" class="btn btn-accent btn-lg" id="gStart">게임 시작</button>
+          <p class="muted" style="font-size:.82rem">시작하면 메트로놈 4번 뒤에 노트가 내려옵니다.</p>
+        </div>
+        <div class="g-card" id="gResult" hidden>
+          <p class="label">결과</p>
+          <p class="g-grade" id="gGrade">A</p>
+          <p id="gSummary" class="muted"></p>
+          <div class="g-break" id="gBreak"></div>
+          <div class="g-cta">
+            <button type="button" class="btn btn-outline btn-lg" id="gAgain">다시 하기</button>
+            <a class="btn btn-accent btn-lg" href="#offer">진짜 드럼으로 쳐 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="g-pads" id="gPads">
+      <button type="button" data-lane="0"><b>A</b>하이햇</button>
+      <button type="button" data-lane="1"><b>S</b>스네어</button>
+      <button type="button" data-lane="2"><b>D</b>탐</button>
+      <button type="button" data-lane="3"><b>Space</b>베이스</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="why"><div class="wrap two" style="align-items:center">
+  <div>
+    <span class="label">Why Drum</span>
+    <h2 style="margin-top:12px">드럼은 음악이면서<br>온몸을 쓰는 운동입니다</h2>
+    <p class="lead" style="margin-top:16px">양손과 양발이 서로 다르게 움직이고, 눈으로 보고 귀로 들으며, 뇌가 이 모든 움직임을 한꺼번에 조절합니다. 손·발·눈·귀·뇌를 함께 쓰는 전신 협응 활동입니다.</p>
+    <div class="formula" aria-label="음악, 리듬, 전신운동, 두뇌활동이 동시에">
+      <span>음악</span><i>+</i><span>리듬</span><i>+</i><span>전신운동</span><i>+</i><span>두뇌활동</span>
+    </div>
+  </div>
+  <div>
+    <ul class="limbs" aria-label="드럼을 칠 때 함께 쓰는 것">
+      <li><b>손</b><span>양손이 서로 다른 리듬</span></li>
+      <li><b>발</b><span>두 발이 페달로 박자</span></li>
+      <li><b>눈</b><span>악보와 영상 따라가기</span></li>
+      <li><b>귀</b><span>음악 들으며 맞추기</span></li>
+      <li><b>뇌</b><span>모든 움직임 동시 조절</span></li>
+    </ul>
+    <div class="note">
+      <h3>음악을 처음 해 보는 어른도 바로 시작할 수 있습니다</h3>
+      <p>피아노처럼 음계와 화성을 먼저 알아야 소리를 낼 수 있는 악기가 아닙니다. 드럼은 기본 리듬 하나로 바로 연주를 시작할 수 있어서, 악기를 처음 잡는 성인도 부담 없이 첫걸음을 뗄 수 있습니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+  <div class="prose">
+    <span class="label">About</span>
+    <h2>드럼을 배우는 곳을 넘어, 머물고 싶은 음악 공간</h2>
+    <p>이지드럼은 수원 매탄동에 있는 성인 중심 드럼 연습·교육·음악 커뮤니티 공간입니다. 기초교육, 자율연습, 선택형 1:1 레슨, 영상촬영, 공연, 회원 커뮤니티를 한 공간에서 경험할 수 있도록 만들어 왔습니다.</p>
+    <p>많은 인원을 받는 것보다, 한 사람이 한 시간을 머물더라도 좋은 환경에서 음악을 충분히 즐기는 것을 더 중요하게 생각합니다.</p>
+  </div>
+  <div class="card prose" style="padding:28px">
+    <p class="motto" style="color:var(--fg)">DRUM IS MUSIC,<span>DRUM IS MOVEMENT</span></p>
+    <p>이지드럼은 성인과 중장년이 음악과 몸의 움직임을 함께 즐기며 일상에 새로운 활력을 찾는 데 주목합니다. 3년 동안 실제 회원들과 함께 운영하며 그 변화를 가까이에서 지켜봐 왔습니다.</p>
+  </div>
+</div></section>
+
+<section id="space"><div class="wrap">
+  <div class="head">
+    <span class="label">Space</span>
+    <h2>오래 연습해도 답답하지 않은 연습실</h2>
+    <p class="lead">공간과 환경에 가장 많은 비중을 두고 설계했습니다. 각 연습실은 일반적인 소규모 드럼 연습실보다 여유 있게 만들었습니다.</p>
+  </div>
+  <div class="kit">
+    <div class="card"><b>6</b><h3>독립 드럼 연습실</h3><p>연습실마다 음향설비와 마이크 시스템</p></div>
+    <div class="card"><b>1</b><h3>공연용 드럼</h3><p>미니 음악회와 리허설 무대</p></div>
+    <div class="card"><b>1</b><h3>녹음·영상촬영용 드럼</h3><p>연주를 기록하고 자세를 확인하는 공간</p></div>
+  </div>
+  <div class="feat">
+    <div class="card"><h3>환기·덕트 설비</h3><p>지하 공간의 단점을 보완하도록 환기와 공기순환을 고려해 운영합니다.</p></div>
+    <div class="card"><h3>천장형 냉방과 식물</h3><p>공용공간에 천장형 냉방을 두고, 사계절 푸른 식물로 닫힌 느낌을 줄였습니다.</p></div>
+    <div class="card"><h3>커뮤니티 라운지</h3><p>커피와 차를 마시며 음악과 일상을 나누는 별도 공간이 있습니다.</p></div>
+  </div>
+  <div class="bento">
+    <figure class="photo w2"><img src="room-a.jpg" alt="모니터와 보면대가 있는 독립 드럼 연습실" loading="lazy" width="1400" height="1050"><figcaption class="cap">독립 연습실</figcaption></figure>
+    <figure class="photo h2"><img src="room-c.jpg" alt="붉은 조명의 드럼 연습실" loading="lazy" width="1050" height="1400"><figcaption class="cap">연습실마다 다른 분위기</figcaption></figure>
+    <figure class="photo"><img src="room-b.jpg" alt="밝은 벽면의 드럼 연습실" loading="lazy" width="1400" height="1050"><figcaption class="cap">여유 있는 연습 공간</figcaption></figure>
+    <figure class="photo"><img src="studio.jpg" alt="모니터 화면이 있는 녹음·촬영용 드럼" loading="lazy" width="1400" height="1050"><figcaption class="cap">녹음·영상촬영용 드럼</figcaption></figure>
+    <figure class="photo w2"><img src="stage.jpg" alt="조명과 스크린이 있는 공연 공간과 객석 의자" loading="lazy" width="1400" height="1050"><figcaption class="cap">공연 공간</figcaption></figure>
+    <figure class="photo h2"><img src="plants.jpg" alt="공용공간의 푸른 식물" loading="lazy" width="1050" height="1400"><figcaption class="cap">사계절 푸른 공용공간</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="edu"><div class="wrap">
+  <div class="head">
+    <span class="label">Education</span>
+    <h2>기초교육, 자율연습, 필요할 때 1:1</h2>
+    <p class="lead">오랜 기간 단체수업에 기대는 방식 대신, 혼자 한 곡을 연습할 수 있을 때까지 기초를 잡아 드리고 그다음은 내 속도로 연습합니다.</p>
+  </div>
+  <div class="steps">
+    <div class="card"><div class="top"><span class="num">STEP 1</span><span class="badge accent">추가 레슨비 없음</span></div><h3>필수 기초교육</h3><p>악보 읽기와 핵심 리듬을 익히고, 연습과 영상 확인을 통해 스스로 곡을 연주할 수 있는 바탕을 만듭니다.</p></div>
+    <div class="card"><div class="top"><span class="num">STEP 2</span><span class="badge">내 일정에 맞춰</span></div><h3>독립 자율연습</h3><p>기초과정을 마치면 수준과 취향에 맞는 곡을 골라 독립 연습실에서 자유롭게 연습합니다.</p></div>
+    <div class="card"><div class="top"><span class="num">필요할 때</span><span class="badge">사전 상담 후</span></div><h3>선택형 1:1 레슨</h3><p>특정 테크닉, 자세, 어려운 구간에 도움이 필요할 때만 신청합니다. 현재 실력과 목표를 먼저 확인합니다.</p></div>
+  </div>
+</div></section>
+
+<section id="hours"><div class="wrap">
+  <div class="head">
+    <span class="label">Membership Hours</span>
+    <h2>오전 회원과 오후 회원</h2>
+  </div>
+  <div class="hours">
+    <div class="card">
+      <h3>오전 회원</h3>
+      <span class="time">10:00 – 12:00</span>
+      <div class="chips"><span>월·수반</span><span>화·목반</span><span>월·화·수·목반</span><span>금·토반</span></div>
+      <p>실제 모집 요일과 정원은 운영 상황에 따라 조정합니다. 원천동 주민센터 연계 프로그램도 함께 운영합니다.</p>
+    </div>
+    <div class="card">
+      <h3>오후 회원</h3>
+      <span class="time">12:00 – 22:00</span>
+      <p>기초과정을 마친 회원이 자신의 일정과 연습 목표에 맞춰 이용하는 자율연습 중심 시스템입니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="stage"><div class="wrap">
+  <div class="two">
+    <div class="ticket">
+      <span class="label">Quarterly Mini Concert</span>
+      <h3>이지드럼 with 계절의 편지 미니 음악회</h3>
+      <p>분기마다 열리는 회원 무대입니다. 참여는 의무가 아니며 희망 회원만 무대에 섭니다.</p>
+      <div class="flow"><span>곡 선정</span><i>→</i><span>연습</span><i>→</i><span>피드백</span><i>→</i><span>리허설</span><i>→</i><span>무대</span></div>
+    </div>
+    <div class="prose">
+      <span class="label">Stage</span>
+      <h2>한 곡을 무대에서 완성하는 경험</h2>
+      <p>공연에 참여하는 회원에게는 곡 선정, 연주 방향, 자세와 무대 준비까지 피드백을 드리고, 필요하면 보완 레슨과 리허설을 진행합니다.</p>
+      <p>완성도 높은 공연과 연주 영상은 본인 동의를 받아 이지드럼 유튜브에 소개할 수 있습니다.</p>
+    </div>
+  </div>
+  <div class="subhead"><span class="label">Community</span><h3 style="font-size:1.4rem;font-weight:800">음악이 같은 관심사인 어른들의 모임</h3><p class="muted" style="font-size:.93rem">모든 커뮤니티 활동은 자율이며, 회원 각자의 생활과 성향을 존중합니다.</p></div>
+  <ul class="comm">
+    <li>분기별 미니 음악회</li><li>연말 송년 음악행사</li><li>소규모 소풍·문화활동</li><li>회원 번개모임</li>
+    <li>합주와 공연 준비</li><li>회원 간 음악 교류</li><li>계절의 편지 음악 프로젝트</li><li>외부 게스트 초청 행사</li>
+  </ul>
+  <div class="strip">
+    <figure class="photo w2"><img src="members.jpg" alt="EASY DRUM WITH US 현수막 앞에 모인 회원들" loading="lazy" width="1184" height="864"><figcaption class="cap">회원 모임</figcaption></figure>
+    <figure class="photo"><img src="concert.jpg" alt="무대 위 드럼 앞에 선 회원들" loading="lazy" width="646" height="1400"><figcaption class="cap">무대에서</figcaption></figure>
+    <figure class="photo"><img src="yearend.jpg" alt="2025년 송년 행사에 모인 회원들" loading="lazy" width="920" height="1400"><figcaption class="cap">2025 송년</figcaption></figure>
+    <figure class="photo w2"><img src="gathering.jpg" alt="식당에서 함께 식사하는 회원들" loading="lazy" width="1400" height="1050"><figcaption class="cap">회원 모임</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="voices"><div class="wrap two" style="align-items:center">
+  <div class="prose">
+    <span class="label">Members</span>
+    <h2>회원들이 이곳을 다시 찾는 이유</h2>
+    <p>회원들은 이지드럼을 드럼만 치고 가는 연습실이 아니라, 편하게 머물며 자신에게 집중하는 공간이라고 말합니다.</p>
+    <p>처음 스틱을 잡았던 회원이 시간이 지나 무대에 서고, 연주 실력과 함께 자신감과 표현력, 무대에서의 모습이 달라지는 경우를 자주 봅니다. 쾌적한 공간과 자유로운 분위기, 음악으로 이어지는 회원 간 교류도 회원들이 꼽는 이지드럼의 특징입니다.</p>
+  </div>
+  <figure class="photo" style="aspect-ratio:4/3"><img src="members.jpg" alt="EASY DRUM WITH US 현수막 앞에 모인 회원들" loading="lazy"><figcaption class="cap">이지드럼 회원들</figcaption></figure>
+</div></section>
+
+<section id="people"><div class="wrap">
+  <div class="head">
+    <span class="label">People</span>
+    <h2>이지드럼을 함께 만드는 사람들</h2>
+  </div>
+  <div class="people">
+    <article class="card person">
+      <div class="avatar" aria-hidden="true">세현</div>
+      <div>
+        <span class="role">운영·교육·콘텐츠·공연 총괄</span>
+        <h3>세현 실장</h3>
+        <ul class="check">
+          <li>이지드럼 운영 총괄, 신규회원 기초 드럼교육</li>
+          <li>회원 연습과 성장과정 관리</li>
+          <li>영상촬영 연주 자세와 콘셉트 코디네이션</li>
+          <li>공연 곡 선정, 리허설, 미니 음악회 기획·감독</li>
+          <li>원천동 주민센터 연계 프로그램</li>
+          <li>음악 콘텐츠 기획, 「계절의 편지」 운영</li>
+        </ul>
+        <p class="pending">보유 자격과 경력은 정확한 명칭 확인 후 추가합니다.</p>
+      </div>
+    </article>
+    <article class="card person">
+      <div class="avatar" aria-hidden="true">남일</div>
+      <div>
+        <span class="role">전문교육 · 1:1 개인레슨</span>
+        <h3>김남일 강사</h3>
+        <p class="bio muted" style="font-size:.94rem">드럼 전문 YouTube 채널 「질주드럼」을 운영하며 연주·교육·악보 콘텐츠를 직접 만듭니다. 직접 채보한 방대한 자료를 바탕으로 실제 음악을 연주하는 데 필요한 실전 중심 교육을 합니다.</p>
+        <ul class="check">
+          <li>1,400곡 이상 드럼 콘텐츠 제작·채보</li>
+          <li>드럼 연주·교육 영상 제작과 편집</li>
+          <li>이지드럼 1:1 개인레슨</li>
+        </ul>
+        <p class="pending">질주드럼 구독자 수는 공개 직전 최신 수치로 반영합니다.</p>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <div class="head">
+    <span class="label">Programs &amp; Services</span>
+    <h2>프로그램과 서비스</h2>
+    <p class="lead">회원권과 서비스 비용은 상담을 통해 안내합니다. 이용 목적과 시간대에 맞는 방식을 함께 정해 드립니다.</p>
+  </div>
+  <div class="svc">
+    <div class="card"><h3>정규 회원</h3><p>오전 회원, 오후 회원. 필수 기초교육 후 독립 연습실 자율연습.</p><span class="ask">상담 후 안내</span></div>
+    <div class="card"><h3>1:1 개인레슨</h3><p>사전 상담으로 현재 실력과 목표를 확인한 뒤 진행합니다.</p><span class="ask">별도 문의</span></div>
+    <div class="card"><h3>드럼 영상촬영</h3><p>사전예약제, 1회 30분. 매월 지정 촬영일에 운영하며 비회원도 이용할 수 있습니다.</p><span class="ask">예약 문의</span></div>
+    <div class="card"><h3>원데이 클래스</h3><p>드럼을 처음 접하는 분이 하루 동안 드럼을 경험하는 프로그램입니다.</p><span class="ask">별도 문의</span></div>
+    <div class="card"><h3>주니어 드럼 연습실 대여</h3><p>개인 연습공간이 필요한 청소년을 위한 연습실 대여입니다. 레슨은 포함되지 않으며, 보호자 동의 후 지정 시간대에 이용합니다.</p><span class="ask">별도 문의</span></div>
+    <div class="card"><h3>공연·문화행사</h3><p>회원 공연, 계절의 편지 연계 음악 프로젝트, 행사 연주.</p><span class="ask">별도 협의</span></div>
+  </div>
+
+  <div class="subhead" id="org"><span class="label">For Organizations</span><h3 style="font-size:1.4rem;font-weight:800">기관·단체 프로그램</h3><p class="muted" style="font-size:.93rem">기관 프로그램은 운영 목적과 조건이 기관마다 달라 정해진 1인당 가격을 두지 않습니다.</p></div>
+  <div class="orgs">
+    <div class="card"><h3>주민센터·공공기관 협력</h3><p>주민복지와 문화생활 지원 목적의 지역 문화 프로그램</p></div>
+    <div class="card"><h3>복지관·평생교육기관 출강</h3><p>중장년·시니어 드럼 등 기관 전용으로 따로 구성하는 과정</p></div>
+    <div class="card"><h3>기업·단체·행사</h3><p>원데이 드럼 체험, 단체 프로그램, 문화행사, 공연 연계</p></div>
+  </div>
+  <p class="terms">비용은 참여 인원, 운영 횟수, 악기 및 공간 제공 여부, 강사 구성 등에 따라 기관별로 협의합니다.</p>
+  <ol class="osteps">
+    <li><span class="mono">01</span><b>문의</b><span>기관명과 담당자 연락처를 남겨 주세요.</span></li>
+    <li><span class="mono">02</span><b>소개자료 발송</b><span>담당자 이메일로 보내 드립니다.</span></li>
+    <li><span class="mono">03</span><b>조건 확인</b><span>인원, 횟수, 악기·공간, 운영 방식</span></li>
+    <li><span class="mono">04</span><b>미팅</b><span>기관에 맞춘 프로그램안 제안</span></li>
+  </ol>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <div class="head">
+    <span class="label">House Rules</span>
+    <h2>함께 쓰는 공간의 운영 원칙</h2>
+    <p class="lead">상세 이용수칙은 회원 등록 때 따로 안내합니다.</p>
+  </div>
+  <ul class="rules">
+    <li><span class="mono">—</span>쾌적한 공동 이용환경 유지</li><li><span class="mono">—</span>음주 후 입실 금지</li><li><span class="mono">—</span>악기와 시설 보호</li><li><span class="mono">—</span>다른 회원의 연습 방해 금지</li>
+    <li><span class="mono">—</span>사전 허가 없는 촬영·SNS 게시 금지</li><li><span class="mono">—</span>회원 간 기본 이용예절</li><li><span class="mono">—</span>이용 후 시설과 전원 확인</li><li><span class="mono">—</span>운영자의 시설 이용기준 준수</li>
+  </ul>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="head center">
+    <span class="label">FAQ</span>
+    <h2>자주 묻는 질문</h2>
+  </div>
+  <div class="faq">
+    <details><summary>악기를 전혀 해 본 적이 없는데 괜찮을까요?</summary><div class="a">네. 드럼은 음계나 화성을 몰라도 기본 리듬부터 바로 시작할 수 있습니다. 처음 오시면 혼자 한 곡을 연습할 수 있을 때까지 필수 기초교육을 추가 레슨비 없이 진행합니다.</div></details>
+    <details><summary>50대, 60대도 많이 오시나요?</summary><div class="a">이지드럼은 성인과 중장년 회원이 중심입니다. 오전 회원반은 평일 오전에 운영되어 낮 시간이 자유로운 분들이 많이 이용합니다.</div></details>
+    <details><summary>스틱이나 드럼을 따로 사야 하나요?</summary><div class="a">연습실마다 드럼이 설치되어 있어 악기를 사지 않아도 됩니다. 개인 스틱은 준비하시면 좋고, 처음에는 상담 때 안내해 드립니다.</div></details>
+    <details><summary>이용료는 얼마인가요?</summary><div class="a">회원권과 서비스 비용은 이용 시간대와 목적에 따라 달라 상담을 통해 안내합니다. 전화나 카카오톡으로 문의해 주세요.</div></details>
+    <details><summary>공연에 꼭 나가야 하나요?</summary><div class="a">아닙니다. 분기 미니 음악회는 희망하는 회원만 참여합니다. 참여하시면 곡 선정부터 리허설까지 함께 준비합니다.</div></details>
+    <details><summary>주차는 가능한가요?</summary><div class="a">건물 주변 주차 여건은 상담 때 안내해 드립니다. 매탄2동 행정복지센터 맞은편이라 찾기 쉽습니다.</div></details>
+    <details><summary>기관에서 단체 프로그램을 문의하려면요?</summary><div class="a">기관명과 담당자 연락처를 남겨 주시면 소개자료를 이메일로 보내 드리고, 인원·횟수·장소 조건을 확인한 뒤 기관에 맞는 프로그램안을 제안합니다.</div></details>
+  </div>
+</div></section>
+
+<section id="channels"><div class="wrap">
+  <div class="head">
+    <span class="label">Channels</span>
+    <h2>온라인에서 만나는 이지드럼</h2>
+  </div>
+  <div class="chan">
+    <a href="https://www.youtube.com/@easy_drum" target="_blank" rel="noopener"><b>수원 이지드럼 YouTube</b><small>회원 연주와 이지드럼 활동</small></a>
+    <a href="https://www.youtube.com/channel/UCSptvt_IzpQIHUjHIOfAUSA" target="_blank" rel="noopener"><b>질주드럼 YouTube</b><small>김남일 강사의 드럼 전문 채널, 악보 영상</small></a>
+    <a href="https://www.youtube.com/@%EC%9D%B4%EC%A7%80%EB%9D%BC%EC%9D%B4%ED%94%84-l1996" target="_blank" rel="noopener"><b>이지라이프 YouTube</b><small>세현 실장의 활동과 콘텐츠</small></a>
+    <a href="https://www.youtube.com/@season-letter1996" target="_blank" rel="noopener"><b>계절의 편지 YouTube</b><small>글, 가사, 음악, 영상을 엮은 창작 음악 프로젝트</small></a>
+    <a href="https://blog.naver.com/easydrum" target="_blank" rel="noopener"><b>네이버 블로그</b><small>공간, 프로그램, 회원 활동 소식</small></a>
+    <a href="https://naver.me/xjL8Ot5H" target="_blank" rel="noopener"><b>네이버 플레이스</b><small>최신 공식 운영 정보, 길찾기</small></a>
+  </div>
+</div></section>
+
+<section id="contact" style="border-bottom:0"><div class="wrap two">
+  <div class="prose">
+    <span class="label">Contact</span>
+    <h2>상담 문의</h2>
+    <p>회원권, 레슨, 영상촬영, 기관 프로그램 모두 세현 실장이 직접 안내합니다.</p>
+    <dl class="info">
+      <div class="row"><dt>담당</dt><dd>이지드럼 세현 실장</dd></div>
+      <div class="row"><dt>전화</dt><dd class="copy"><b id="tel">010-2981-2964</b><button type="button" data-copy="tel">번호 복사</button></dd></div>
+      <div class="row"><dt>카카오톡</dt><dd class="copy"><span>채널 <b id="kakao">CH6471</b></span><button type="button" data-copy="kakao">ID 복사</button></dd></div>
+      <div class="row"><dt>주소</dt><dd>경기도 수원시 영통구 매영로45번길 7, 지하 1층<br><span class="muted" style="font-size:.88rem">매탄2동 행정복지센터 맞은편 · <a href="https://naver.me/xjL8Ot5H" target="_blank" rel="noopener">네이버 지도 ↗</a></span></dd></div>
+      <div class="row"><dt>운영 시간</dt><dd>오전 회원 10:00–12:00 · 오후 회원 12:00–22:00</dd></div>
+    </dl>
+    <div class="actions" style="margin-top:20px"><a class="btn btn-accent btn-lg" href="https://naver.me/xjL8Ot5H" target="_blank" rel="noopener">길찾기 ↗</a></div>
+  </div>
+  <figure class="photo entrance"><img src="entrance.jpg" alt="꽃 화분이 놓인 이지드럼 입구" loading="lazy" width="1050" height="1400"><figcaption class="cap">매영로45번길 입구</figcaption></figure>
+</div></section>
+</main>
+
+<footer style="border-top:1px solid var(--border)"><div class="wrap">
+  <div><b>이지드럼</b> · 성인을 위한 드럼 &amp; 음악문화공간 · 경기도 수원시 영통구 매영로45번길 7, B1</div>
+  <div>© 2026 이지드럼 · <a href="#top">맨 위로</a></div>
+</div></footer>
+<a class="totop" href="#top" aria-label="맨 위로">↑</a>
+<div class="dock" aria-label="빠른 문의">
+  <a class="btn btn-accent" href="#offer" id="dockKakao">카톡 체험 신청</a>
+  <button class="btn btn-outline" type="button" data-copy="tel">전화번호 복사</button>
+</div>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+  <div class="lb-top"><span id="lbCount">1 / 1</span><button type="button" id="lbClose">닫기 ✕</button></div>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <div class="lb-nav"><button type="button" id="lbPrev" aria-label="이전 사진">← 이전</button><button type="button" id="lbNext" aria-label="다음 사진">다음 →</button></div>
+</div>
+
+<div class="page" id="page" hidden role="dialog" aria-modal="true" aria-labelledby="pgTitle">
+  <div class="page-bar"><div class="wrap">
+    <button class="btn btn-outline" type="button" id="pgBack">← 돌아가기</button>
+    <span class="crumb" id="pgCrumb">이지드럼</span>
+  </div></div>
+  <div class="wrap page-body">
+    <div class="page-hero">
+      <div>
+        <span class="label" id="pgLabel"></span>
+        <h1 id="pgTitle"></h1>
+        <p class="lead" id="pgLead"></p>
+        <ul class="check facts-list" id="pgList"></ul>
+        <div class="page-cta">
+          <a class="btn btn-accent btn-lg" href="#offer" data-tip="첫 화면의 체험 신청 카드로 이동">카톡으로 문의하기</a>
+          <button class="btn btn-outline btn-lg" type="button" data-copy="tel">전화번호 복사</button>
+        </div>
+        <p class="page-note" id="pgNote"></p>
+      </div>
+      <div class="page-photos" id="pgPhotos"></div>
+    </div>
+    <div>
+      <p class="label" style="margin-bottom:10px">다른 프로그램</p>
+      <div class="related" id="pgRel"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // 8비트 패턴: HH 8분, SD 2·4박, BD 1·3박
+  var lanes=[["HH",[0,2,4,6,8,10,12,14],[0,4,8,12]],["SD",[4,12],[4,12]],["BD",[0,8],[]]];
+  var g=document.getElementById("grid"), cells=[];
+  lanes.forEach(function(l){
+    var lab=document.createElement("span");lab.className="lane";lab.textContent=l[0];g.appendChild(lab);
+    var row=[];
+    for(var i=0;i<16;i++){var c=document.createElement("i");
+      if(l[1].indexOf(i)>-1)c.className=(l[0]==="SD"?"acc":"on");else if(i%4===0)c.className="beat";
+      g.appendChild(c);row.push(c);}
+    cells.push(row);
+  });
+  var btn=document.getElementById("play"), t=null, step=0, ctx=null;
+  function tone(kind){
+    if(!ctx)return;var now=ctx.currentTime,o=ctx.createOscillator(),v=ctx.createGain();
+    if(kind==="BD"){o.frequency.setValueAtTime(140,now);o.frequency.exponentialRampToValueAtTime(45,now+.15);v.gain.setValueAtTime(.9,now);v.gain.exponentialRampToValueAtTime(.001,now+.2)}
+    else{var len=kind==="HH"?.04:.14,b=ctx.createBuffer(1,ctx.sampleRate*len,ctx.sampleRate),d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+      var n=ctx.createBufferSource();n.buffer=b;var f=ctx.createBiquadFilter();f.type=kind==="HH"?"highpass":"bandpass";f.frequency.value=kind==="HH"?7000:1800;
+      var gg=ctx.createGain();gg.gain.setValueAtTime(kind==="HH"?.25:.6,now);gg.gain.exponentialRampToValueAtTime(.001,now+len);n.connect(f);f.connect(gg);gg.connect(ctx.destination);n.start(now);return}
+    o.connect(v);v.connect(ctx.destination);o.start(now);o.stop(now+.22);
+  }
+  function tick(){
+    lanes.forEach(function(l,li){if(l[1].indexOf(step)>-1){var c=cells[li][step];c.classList.remove("hit");void c.offsetWidth;c.classList.add("hit");if(window.__drumPlay)window.__drumPlay({HH:"hat",SD:"snare",BD:"kick"}[l[0]])}});
+    step=(step+1)%16;
+  }
+  btn.addEventListener("click",function(){
+    if(t){clearInterval(t);t=null;btn.textContent="▶ 패턴 재생";btn.setAttribute("aria-pressed","false");return}
+    try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();if(ctx.resume)ctx.resume()}catch(e){ctx=null}
+    step=0;tick();t=setInterval(tick,60000/96/4);btn.textContent="■ 정지";btn.setAttribute("aria-pressed","true");
+  });
+
+  var go=document.getElementById("kakaoGo"), msg=document.getElementById("msg"), how=document.getElementById("howtoText");
+  function copyMsg(){
+    function ok(){go.textContent="문구 복사됨 · 카톡에서 CH6471 검색";how.innerHTML="카카오톡 열기 → 검색창에 <b>CH6471</b> → 채팅창에 붙여넣기";setTimeout(function(){go.textContent="카톡으로 체험 신청"},4000)}
+    function sel(){var r=document.createRange();r.selectNodeContents(msg);var s=getSelection();s.removeAllRanges();s.addRange(r);go.textContent="문구 선택됨 · 길게 눌러 복사"}
+    try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(msg.textContent).then(ok,sel)}else sel()}catch(e){sel()}
+  }
+  if(go)go.addEventListener("click",copyMsg);
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var el=document.getElementById(b.getAttribute("data-copy")), text=el.textContent, old=b.textContent;
+      function done(){b.textContent="복사됨";setTimeout(function(){b.textContent=old},1500)}
+      function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="선택됨";setTimeout(function(){b.textContent=old},1500)}
+      try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else fallback()}catch(e){fallback()}
+    });
+  });
+  var m=document.querySelector(".menu");
+  if(m){m.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){m.removeAttribute("open")})});
+    document.addEventListener("click",function(e){if(m.open&&!m.contains(e.target))m.removeAttribute("open")});}
+})();
+
+/* ---------- audio (concert) ---------- */
+(function(){
+  var AC=null,on=false,bus,rev,wet,master,shaper,btn=document.getElementById("soundBtn"),vol=1.0,hall=true;
+  function setBtn(){if(!btn)return;btn.setAttribute("aria-pressed",on?"true":"false");btn.querySelector("span").textContent=on?"소리 켜짐":"소리 꺼짐"}
+  function impulse(sec,decay){var r=AC.sampleRate,n=r*sec|0,b=AC.createBuffer(2,n,r);for(var c=0;c<2;c++){var d=b.getChannelData(c);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay)}return b}
+  function curve(k){var n=1024,c=new Float32Array(n);for(var i=0;i<n;i++){var x=i*2/n-1;c[i]=(1+k)*x/(1+k*Math.abs(x))}return c}
+  function build(){
+    AC=new (window.AudioContext||window.webkitAudioContext)();
+    var glue=AC.createDynamicsCompressor();glue.threshold.value=-18;glue.knee.value=8;glue.ratio.value=4;glue.attack.value=.004;glue.release.value=.18;
+    var lim=AC.createDynamicsCompressor();lim.threshold.value=-2;lim.knee.value=0;lim.ratio.value=20;lim.attack.value=.001;lim.release.value=.08;
+    master=AC.createGain();master.gain.value=2.2*vol;
+    shaper=AC.createWaveShaper();shaper.curve=curve(2.5);shaper.oversample="2x";
+    bus=AC.createGain();bus.gain.value=1;
+    rev=AC.createConvolver();rev.buffer=impulse(2.6,2.4);wet=AC.createGain();wet.gain.value=hall?.42:0;
+    bus.connect(shaper);shaper.connect(glue);bus.connect(rev);rev.connect(wet);wet.connect(glue);
+    glue.connect(master);master.connect(lim);lim.connect(AC.destination);
+    on=true;setBtn();
+  }
+  function unlock(){if(AC){if(AC.state==="suspended")AC.resume();return}try{build()}catch(e){AC=null}}
+  document.addEventListener("pointerdown",unlock,{once:true});
+  document.addEventListener("keydown",unlock,{once:true});
+  if(btn)btn.addEventListener("click",function(e){e.stopPropagation();if(!AC){unlock();return}on=!on;setBtn()});
+  var vs=document.getElementById("volSlider"),hb=document.getElementById("hallBtn");
+  if(vs)vs.addEventListener("input",function(){vol=vs.value/100;document.getElementById("volOut").textContent=vs.value+"%";if(master)master.gain.value=2.2*vol});
+  if(hb)hb.addEventListener("click",function(){hall=!hall;hb.setAttribute("aria-pressed",hall?"true":"false");hb.querySelector("span").textContent=hall?"공연장 울림 켜짐":"공연장 울림 꺼짐";if(wet)wet.gain.value=hall?.42:0});
+  function noise(len,type,freq,g,q,at){var t=AC.currentTime+(at||0),n=Math.max(1,AC.sampleRate*len|0),bf=AC.createBuffer(1,n,AC.sampleRate),d=bf.getChannelData(0);
+    for(var i=0;i<n;i++)d[i]=Math.random()*2-1;var src=AC.createBufferSource();src.buffer=bf;var f=AC.createBiquadFilter();f.type=type;f.frequency.value=freq;if(q)f.Q.value=q;
+    var v=AC.createGain();v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0008,t+len);src.connect(f);f.connect(v);v.connect(bus);src.start(t)}
+  function osc(f1,f2,len,g,type,bend){var t=AC.currentTime,o=AC.createOscillator(),v=AC.createGain();o.type=type||"sine";o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+(bend||len));
+    v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.002);v.gain.exponentialRampToValueAtTime(.0008,t+len);o.connect(v);v.connect(bus);o.start(t);o.stop(t+len+.03)}
+  var S={
+    kick:function(){osc(170,48,.55,1.6,"sine",.09);osc(60,42,.45,.9);noise(.025,"highpass",2500,.9)},
+    snare:function(){noise(.28,"bandpass",1700,1.5,.6);noise(.18,"highpass",5200,.9);osc(240,170,.14,.9,"triangle",.05)},
+    hat:function(){noise(.07,"highpass",7800,.75);noise(.05,"bandpass",10500,.4,1.5)},
+    tom1:function(){osc(260,160,.5,1.3,"sine",.12);noise(.04,"bandpass",2400,.4)},
+    tom2:function(){osc(190,118,.55,1.3,"sine",.13);noise(.04,"bandpass",1900,.4)},
+    floor:function(){osc(125,72,.75,1.5,"sine",.16);noise(.05,"bandpass",1300,.4)},
+    crash:function(){noise(2.4,"highpass",3200,1.1);noise(1.2,"bandpass",7500,.6,.8)},
+    ride:function(){noise(1.1,"bandpass",6200,.5,2);osc(2700,2600,.7,.12,"triangle")},
+    click:function(){osc(1600,1500,.04,.35,"square")},
+    clickHi:function(){osc(2200,2100,.05,.45,"square")}
+  };
+  window.__drumPlay=function(k){if(!AC||!on)return;try{if(AC.state==="suspended")AC.resume();S[k]&&S[k]()}catch(e){}};
+  window.__drumUnlock=unlock;
+})();
+
+/* ---------- drum kit ---------- */
+(function(){
+  var kit=document.getElementById("kit");if(!kit)return;
+  var last={},count=0,cnt=document.getElementById("hitCount"),NS="http://www.w3.org/2000/svg";
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function hit(g){
+    var k=g.getAttribute("data-k"),now=Date.now();if(last[k]&&now-last[k]<90)return;last[k]=now;
+    window.__drumPlay(k);
+    g.classList.remove("hit");void g.getBBox();g.classList.add("hit");
+    clearTimeout(g._t);g._t=setTimeout(function(){g.classList.remove("hit")},reduce?120:700);
+    if(!reduce){var b=g.getBBox(),c=document.createElementNS(NS,"circle");c.setAttribute("class","ripple");
+      c.setAttribute("cx",b.x+b.width/2);c.setAttribute("cy",b.y+Math.min(b.height/2,24));c.setAttribute("r",14);
+      kit.appendChild(c);setTimeout(function(){c.remove()},600);}
+    count++;if(cnt)cnt.textContent=count.toLocaleString("ko-KR");
+  }
+  kit.querySelectorAll(".pc").forEach(function(g){
+    g.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse")hit(g)});
+    g.addEventListener("pointerdown",function(e){if(e.pointerType!=="mouse")e.preventDefault();hit(g)});
+    g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();hit(g)}});
+  });
+  var map={a:"hat",s:"snare",d:"tom1",f:"tom2",j:"floor",k:"ride",l:"crash"," ":"kick"};
+  document.addEventListener("keydown",function(e){
+    if(e.repeat||e.metaKey||e.ctrlKey||e.altKey||window.__gameOn)return;
+    var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"))return;
+    if(!document.getElementById("page").hidden||!document.getElementById("lb").hidden)return;
+    var r=kit.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
+    var k=map[e.key.toLowerCase()];if(!k)return;e.preventDefault();
+    var g=kit.querySelector('[data-k="'+k+'"]');if(g)hit(g);
+  });
+})();
+
+/* ---------- tooltip ---------- */
+(function(){
+  var tip=document.getElementById("tip"),cur=null,timer=null;
+  var auto=[
+    ['.nav a[href="#why"],.sheet a[href="#why"]',"드럼이 왜 어른에게 좋은지"],
+    ['.nav a[href="#space"],.sheet a[href="#space"]',"연습실 6개와 공연 공간 사진"],
+    ['.nav a[href="#edu"],.sheet a[href="#edu"]',"기초교육부터 1:1 레슨까지"],
+    ['.nav a[href="#stage"],.sheet a[href="#stage"]',"분기 미니 음악회와 회원 모임"],
+    ['.nav a[href="#people"],.sheet a[href="#people"]',"세현 실장과 김남일 강사"],
+    ['.nav a[href="#services"],.sheet a[href="#services"]',"회원권·레슨·촬영·원데이"],
+    ['.nav a[href="#faq"]',"처음 오시는 분들이 많이 묻는 것"],
+    ['[data-copy="tel"]',"번호를 복사합니다. 전화 앱에 붙여 넣으세요"],
+    ['[data-copy="kakao"]',"카카오톡 검색창에 붙여 넣으세요"],
+    ['#kakaoGo',"문의 문구를 복사하고 카톡 여는 방법을 알려 드려요"],
+    ['.chan a',"새 창에서 열립니다"],
+    ['.photo,.groove-photo',"눌러서 크게 보기"],
+    ['#play',null]
+  ];
+  auto.forEach(function(a){if(!a[1])return;document.querySelectorAll(a[0]).forEach(function(el){if(!el.hasAttribute("data-tip"))el.setAttribute("data-tip",a[1])})});
+  document.querySelectorAll(".stats div").forEach(function(d,i){d.setAttribute("data-tip",["3년 넘게 실제 성인 회원과 운영","연습실 6 + 공연용 1 + 촬영용 1","방마다 음향설비와 마이크","희망 회원만 무대에 섭니다"][i]||"")});
+  function place(el){
+    var r=el.getBoundingClientRect?el.getBoundingClientRect():null;if(!r)return;
+    tip.hidden=false;tip.classList.remove("below");
+    var w=tip.offsetWidth,h=tip.offsetHeight,cx=r.left+r.width/2;
+    var x=Math.max(12,Math.min(innerWidth-w-12,cx-w/2)),y=r.top-h-10;
+    if(y<70){y=r.bottom+10;tip.classList.add("below")}
+    tip.style.left=x+"px";tip.style.top=y+"px";tip.style.setProperty("--ax",Math.max(10,Math.min(w-10,cx-x))+"px");
+  }
+  function show(el){var t=el.getAttribute("data-tip");if(!t)return;cur=el;tip.textContent=t;place(el)}
+  function hide(){cur=null;tip.hidden=true}
+  document.addEventListener("mouseover",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el&&el!==cur)show(el);else if(!el&&cur)hide()});
+  document.addEventListener("focusin",function(e){var el=e.target.closest&&e.target.closest("[data-tip]");if(el)show(el)});
+  document.addEventListener("focusout",hide);
+  document.addEventListener("pointerdown",function(e){if(e.pointerType==="mouse")return;var el=e.target.closest&&e.target.closest("[data-tip]");
+    if(el){show(el);clearTimeout(timer);timer=setTimeout(hide,1800)}else hide()});
+  addEventListener("scroll",function(){if(cur)hide()},{passive:true});
+})();
+
+/* ---------- lightbox ---------- */
+(function(){
+  var lb=document.getElementById("lb"),img=document.getElementById("lbImg"),cap=document.getElementById("lbCap"),cnt=document.getElementById("lbCount"),list=[],i=0,lastFocus=null;
+  function collect(){var seen={};list=[];document.querySelectorAll(".photo img,.groove-photo img").forEach(function(im){var s=im.getAttribute("src");if(seen[s])return;seen[s]=1;
+    var fc=im.parentNode.querySelector("figcaption");list.push({src:s,alt:im.alt,cap:fc?fc.textContent:im.alt})})}
+  function draw(){var it=list[i];img.src=it.src;img.alt=it.alt;cap.textContent=it.cap;cnt.textContent=(i+1)+" / "+list.length}
+  function open(src){collect();i=Math.max(0,list.findIndex(function(x){return x.src===src}));draw();lastFocus=document.activeElement;lb.hidden=false;document.body.classList.add("lock");document.getElementById("lbClose").focus()}
+  function close(){lb.hidden=true;if(document.getElementById("page").hidden)document.body.classList.remove("lock");if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  function step(d){i=(i+d+list.length)%list.length;draw()}
+  document.addEventListener("click",function(e){var f=e.target.closest&&e.target.closest(".photo,.groove-photo");if(!f)return;var im=f.querySelector("img");if(im){e.preventDefault();open(im.getAttribute("src"))}});
+  document.getElementById("lbClose").onclick=close;document.getElementById("lbPrev").onclick=function(){step(-1)};document.getElementById("lbNext").onclick=function(){step(1)};
+  lb.addEventListener("click",function(e){if(e.target===lb)close()});
+  var sx=null;lb.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null});
+  document.addEventListener("keydown",function(e){if(lb.hidden)return;if(e.key==="Escape")close();else if(e.key==="ArrowRight")step(1);else if(e.key==="ArrowLeft")step(-1)});
+  window.__lbOpen=open;
+})();
+
+/* ---------- detail pages ---------- */
+(function(){
+  var P={
+    "space-tour":{label:"Space",crumb:"공간",title:"연습실 둘러보기",back:"#space",
+      lead:"공간과 환경에 가장 많은 비중을 두고 설계했습니다. 각 연습실은 일반적인 소규모 드럼 연습실보다 여유 있게 만들었습니다.",
+      list:["독립 드럼 연습실 6실, 연습실마다 음향설비와 마이크 시스템","공연용 드럼 1대, 녹음·영상촬영용 드럼 1대","지하 공간을 보완하는 환기·덕트 설비와 천장형 냉방","사계절 푸른 식물과 커피·차를 마시는 커뮤니티 라운지","매탄2동 행정복지센터 맞은편, 매영로45번길 7 지하 1층"],
+      photos:["room-a","room-c","room-b","studio","stage","plants","entrance"],note:"사진은 눌러서 크게 볼 수 있습니다."},
+    "program-member":{label:"Membership",crumb:"프로그램",title:"정규 회원",back:"#services",
+      lead:"필수 기초교육으로 혼자 한 곡을 연습할 수 있을 때까지 기초를 잡고, 그다음은 독립 연습실에서 내 속도로 연습합니다.",
+      list:["필수 기초교육: 악보 읽기와 핵심 리듬, 추가 레슨비 없음","오전 회원 10:00–12:00 · 월·수반, 화·목반, 월·화·수·목반, 금·토반","오후 회원 12:00–22:00 · 내 일정에 맞춘 자율연습","분기 미니 음악회와 회원 모임은 원하는 분만 참여"],
+      photos:["room-a","room-b","plants"],note:"회원권 비용은 이용 시간대와 목적에 따라 달라 상담 후 안내합니다. 모집 요일과 정원은 운영 상황에 따라 조정합니다."},
+    "program-lesson":{label:"1:1 Lesson",crumb:"프로그램",title:"1:1 개인레슨",back:"#services",
+      lead:"특정 테크닉, 자세, 어려운 구간에 도움이 필요할 때만 신청합니다. 사전 상담으로 현재 실력과 목표를 먼저 확인합니다.",
+      list:["김남일 강사 · 드럼 전문 YouTube 「질주드럼」 운영","1,400곡 이상 드럼 콘텐츠 제작·채보","실제 음악을 연주하는 데 필요한 실전 중심 교육","정규 회원 연습과 함께 필요한 만큼만"],
+      photos:["room-c","studio"],note:"레슨 비용은 별도 문의입니다."},
+    "program-video":{label:"Recording",crumb:"프로그램",title:"드럼 영상촬영",back:"#services",
+      lead:"녹음·영상촬영용 드럼에서 내 연주를 기록합니다. 연주 자세와 콘셉트까지 함께 맞춥니다.",
+      list:["사전예약제, 1회 30분","매월 지정 촬영일에 운영","비회원도 이용 가능","동의한 공연·연주 영상은 이지드럼 유튜브에 소개할 수 있음"],
+      photos:["studio","stage"],note:"촬영일과 비용은 예약 문의 때 안내합니다."},
+    "program-oneday":{label:"One-day",crumb:"프로그램",title:"원데이 체험 클래스",back:"#services",
+      lead:"드럼을 처음 접하는 분이 하루 동안 드럼을 경험하는 프로그램입니다. 음계를 몰라도 기본 리듬 하나로 바로 시작합니다.",
+      list:["악기·스틱 없이 빈손으로 와도 됩니다","첫날 8비트 기본 리듬부터","성인과 중장년 회원이 중심인 공간","체험 후 정규 회원으로 이어 가면 기초교육 추가 레슨비 없음"],
+      photos:["room-b","sign-night","entrance"],note:"체험 일정과 비용은 카카오톡 CH6471 또는 전화로 안내합니다."},
+    "program-junior":{label:"Junior",crumb:"프로그램",title:"주니어 드럼 연습실 대여",back:"#services",
+      lead:"개인 연습공간이 필요한 청소년을 위한 연습실 대여입니다.",
+      list:["레슨은 포함되지 않습니다","보호자 동의 후 이용","지정 시간대에 이용","독립 연습실에서 연습"],
+      photos:["room-a"],note:"이용 시간대와 비용은 별도 문의입니다."},
+    "program-stage":{label:"Stage",crumb:"프로그램",title:"공연·문화행사",back:"#services",
+      lead:"회원 공연, 계절의 편지 연계 음악 프로젝트, 행사 연주를 진행합니다.",
+      list:["분기별 이지드럼 with 계절의 편지 미니 음악회","곡 선정 → 연습 → 피드백 → 리허설 → 무대","연말 송년 음악행사, 외부 게스트 초청 행사","행사 연주는 별도 협의"],
+      photos:["concert","stage","yearend"],note:"공연 참여는 의무가 아니며 희망 회원만 무대에 섭니다."},
+    "concert":{label:"Mini Concert",crumb:"공연·커뮤니티",title:"분기 미니 음악회",back:"#stage",
+      lead:"처음 스틱을 잡았던 회원이 시간이 지나 무대에 섭니다. 곡 선정부터 리허설까지 함께 준비합니다.",
+      list:["곡 선정, 연주 방향, 자세와 무대 준비 피드백","필요하면 보완 레슨과 리허설","희망 회원만 참여","합주, 회원 번개모임, 소풍·문화활동, 송년 음악행사"],
+      photos:["concert","members","yearend","gathering","stage"],note:"공연 영상은 본인 동의를 받아 이지드럼 유튜브에 소개할 수 있습니다."},
+    "org":{label:"For Organizations",crumb:"기관·단체",title:"기관·단체 프로그램",back:"#org",
+      lead:"운영 목적과 조건이 기관마다 달라 정해진 1인당 가격을 두지 않습니다. 기관에 맞춘 프로그램안을 제안합니다.",
+      list:["주민센터·공공기관 협력 · 지역 문화 프로그램 (원천동 주민센터 연계 운영 중)","복지관·평생교육기관 출강 · 중장년·시니어 드럼","기업·단체·행사 · 원데이 드럼 체험, 문화행사, 공연 연계","진행: 문의 → 소개자료 이메일 발송 → 조건 확인 → 미팅"],
+      photos:["members","stage","concert"],note:"비용은 참여 인원, 운영 횟수, 악기 및 공간 제공 여부, 강사 구성에 따라 협의합니다."}
+  };
+  var REL=["program-oneday","program-member","program-lesson","program-video","concert","space-tour","org"];
+  var page=document.getElementById("page"),cur=null,lastFocus=null;
+  function $(id){return document.getElementById(id)}
+  function render(k){var d=P[k];
+    $("pgLabel").textContent=d.label;$("pgTitle").textContent=d.title;$("pgCrumb").textContent="이지드럼 / "+d.crumb;$("pgLead").textContent=d.lead;$("pgNote").textContent=d.note||"";
+    $("pgList").innerHTML="";d.list.forEach(function(t){var li=document.createElement("li");li.textContent=t;$("pgList").appendChild(li)});
+    $("pgPhotos").innerHTML="";d.photos.forEach(function(p){var src=""+p+".jpg",o=document.querySelector('img[src="'+src+'"]');
+      var f=document.createElement("figure");f.className="photo";f.setAttribute("data-tip","눌러서 크게 보기");var im=document.createElement("img");im.src=src;im.alt=o?o.alt:d.title;im.loading="lazy";f.appendChild(im);
+      var oc=o&&o.parentNode.querySelector("figcaption");if(oc){var c=document.createElement("figcaption");c.className="cap";c.textContent=oc.textContent;f.appendChild(c)}
+      $("pgPhotos").appendChild(f)});
+    $("pgRel").innerHTML="";REL.filter(function(r){return r!==k}).slice(0,3).forEach(function(r){var a=document.createElement("a");a.href="#"+r;a.innerHTML="<b></b><small></small>";a.querySelector("b").textContent=P[r].title+" →";a.querySelector("small").textContent=P[r].lead.slice(0,38)+"…";$("pgRel").appendChild(a)});
+  }
+  function route(){var k=(location.hash||"").slice(1);
+    if(P[k]){if(!cur)lastFocus=document.activeElement;cur=k;render(k);page.hidden=false;page.scrollTop=0;document.body.classList.add("lock");$("pgBack").focus();try{document.title=P[k].title+" · 이지드럼"}catch(e){}}
+    else if(cur){var back=P[cur].back;cur=null;page.hidden=true;document.body.classList.remove("lock");try{document.title="이지드럼 매탄"}catch(e){}
+      if(!k){var t=document.querySelector(back);if(t)t.scrollIntoView({block:"start"})}}
+  }
+  $("pgBack").onclick=function(){var b=cur?P[cur].back:"#top";location.hash=b};
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&cur&&document.getElementById("lb").hidden){location.hash=P[cur].back}});
+  page.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href="#offer"]');if(a&&cur){cur=null;page.hidden=true;document.body.classList.remove("lock")}});
+  addEventListener("hashchange",route);
+
+  function link(el,k,label){if(!el)return;el.classList.add("go");el.setAttribute("tabindex","0");el.setAttribute("role","link");el.setAttribute("data-tip",label||"눌러서 자세히 보기");
+    el.addEventListener("click",function(e){if(e.target.closest("a,button"))return;location.hash=k});
+    el.addEventListener("keydown",function(e){if(e.key==="Enter"){location.hash=k}});}
+  var sv=["program-member","program-lesson","program-video","program-oneday","program-junior","program-stage"];
+  document.querySelectorAll(".svc .card").forEach(function(c,i){link(c,sv[i],"눌러서 "+P[sv[i]].title+" 자세히 보기");var a=c.querySelector(".ask");if(a)a.insertAdjacentHTML("beforeend",'<span class="more">자세히</span>')});
+  document.querySelectorAll(".orgs .card").forEach(function(c){link(c,"org","기관 프로그램 진행 방식 보기")});
+  document.querySelectorAll(".kit .card,.feat .card").forEach(function(c){link(c,"space-tour","연습실 사진 전체 보기")});
+  link(document.querySelector(".ticket"),"concert","미니 음악회 사진과 진행 방식 보기");
+  document.querySelectorAll(".steps .card").forEach(function(c,i){link(c,i===2?"program-lesson":"program-member",i===2?"1:1 레슨 자세히 보기":"정규 회원 자세히 보기")});
+  route();
+})();
+
+/* ---------- rhythm game ---------- */
+(function(){
+  var cv=document.getElementById("gcv");if(!cv)return;
+  var ctx=cv.getContext("2d"),over=document.getElementById("gOver"),startCard=document.getElementById("gStartCard"),resCard=document.getElementById("gResult");
+  var LANES=[{n:"하이햇",s:"hat",k:"A"},{n:"스네어",s:"snare",k:"S"},{n:"탐",s:"tom1",k:"D"},{n:"베이스",s:"kick",k:"Space"}];
+  var SONGS={easy:{bpm:80,name:"첫 8비트"},rock:{bpm:100,name:"록 8비트 + 필인"},fast:{bpm:124,name:"무대 피날레"}};
+  var song="easy",notes=[],t0=0,run=false,score=0,combo=0,maxC=0,judged=0,cnt={P:0,G:0,O:0,M:0},endT=0,beats=[],bi=0,flash=[0,0,0,0],pops=[],raf=0,step=0,lead=0,col={};
+  function best(){try{return +localStorage.getItem("ezd-best-"+song)||0}catch(e){return 0}}
+  function saveBest(v){try{localStorage.setItem("ezd-best-"+song,String(v))}catch(e){}}
+  function showBest(){var b=best();document.getElementById("gBest").textContent=b?b.toLocaleString("ko-KR"):"–"}
+  function bar(type){ // returns [lane,step] list for one 16-step bar
+    var o=[],i;
+    if(type==="kicksnare"){o.push([3,0],[3,8],[1,4],[1,12])}
+    else if(type==="quarter"){for(i=0;i<16;i+=4)o.push([0,i]);o.push([3,0],[3,8],[1,4],[1,12])}
+    else if(type==="eight"){for(i=0;i<16;i+=2)o.push([0,i]);o.push([3,0],[3,8],[1,4],[1,12])}
+    else if(type==="rock"){for(i=0;i<16;i+=2)o.push([0,i]);o.push([3,0],[3,6],[3,8],[1,4],[1,12])}
+    else if(type==="drive"){for(i=0;i<16;i+=2)o.push([0,i]);o.push([3,0],[3,3],[3,6],[3,8],[3,10],[1,4],[1,12])}
+    else if(type==="fill"){for(i=0;i<8;i+=2)o.push([0,i]);o.push([3,0],[1,4],[2,8],[2,10],[1,12],[1,14])}
+    else if(type==="fill16"){o.push([3,0],[1,4]);for(i=8;i<16;i++)o.push([i<12?1:2,i])}
+    else if(type==="end"){o.push([3,0],[0,0])}
+    return o;
+  }
+  var CHART={easy:["kicksnare","kicksnare","quarter","quarter","eight","eight","eight","fill","eight","eight","eight","fill","end"],
+    rock:["eight","eight","rock","fill","rock","rock","rock","fill","rock","drive","rock","fill16","drive","drive","drive","fill16","end"],
+    fast:["eight","rock","drive","fill","drive","drive","drive","fill16","drive","drive","drive","fill16","drive","drive","fill16","fill16","end"]};
+  function build(){
+    var bpm=SONGS[song].bpm;step=60/bpm/4;lead=16*step;notes=[];beats=[];
+    CHART[song].forEach(function(t,bi){bar(t).forEach(function(n){notes.push({l:n[0],t:lead+(bi*16+n[1])*step,j:0})})});
+    notes.sort(function(a,b){return a.t-b.t});
+    var bars=CHART[song].length;for(var i=0;i<(bars+1)*4;i++)beats.push({t:i*4*step,hi:i%4===0});
+    endT=lead+bars*16*step+1.2;
+  }
+  function size(){var r=cv.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)}
+  function readCol(){var cs=getComputedStyle(document.documentElement);["--bg","--fg","--muted","--border","--border-2","--accent","--card","--muted-bg"].forEach(function(k){col[k]=cs.getPropertyValue(k).trim()||"#888"})}
+  function now(){return performance.now()/1000-t0}
+  function hud(){document.getElementById("gScore").textContent=Math.round(score).toLocaleString("ko-KR");document.getElementById("gCombo").textContent=combo;
+    var acc=judged?((cnt.P*100+cnt.G*70+cnt.O*40)/judged):0;document.getElementById("gAcc").textContent=judged?acc.toFixed(1)+"%":"–"}
+  function judge(n,label,pts,key){n.j=1;judged++;cnt[key]++;if(key==="M"){combo=0}else{combo++;maxC=Math.max(maxC,combo);score+=pts*(1+Math.min(combo,50)/50)}
+    pops.push({l:n.l,txt:label,t:performance.now(),good:key!=="M"});hud()}
+  function hit(l){
+    if(window.__drumPlay)window.__drumPlay(LANES[l].s);flash[l]=performance.now();
+    var pb=document.querySelector('.g-pads [data-lane="'+l+'"]');if(pb){pb.classList.add("on");setTimeout(function(){pb.classList.remove("on")},90)}
+    if(!run)return;var tn=now(),bestN=null,bd=1;
+    for(var i=0;i<notes.length;i++){var n=notes[i];if(n.j||n.l!==l)continue;var d=Math.abs(n.t-tn);if(d<bd){bd=d;bestN=n}if(n.t-tn>.3)break}
+    if(!bestN||bd>.16)return;
+    if(bd<=.05)judge(bestN,"PERFECT",300,"P");else if(bd<=.1)judge(bestN,"GREAT",200,"G");else judge(bestN,"GOOD",100,"O");
+  }
+  function draw(){
+    var W=cv.clientWidth,H=cv.clientHeight,lw=W/4,hy=H*.84,speed=hy/1.5,tn=run?now():0,pn=performance.now();
+    ctx.clearRect(0,0,W,H);ctx.fillStyle=col["--bg"];ctx.fillRect(0,0,W,H);
+    for(var l=0;l<4;l++){var x=l*lw,f=Math.max(0,1-(pn-flash[l])/180);
+      if(f>0){ctx.globalAlpha=.22*f;ctx.fillStyle=col["--accent"];ctx.fillRect(x,0,lw,H);ctx.globalAlpha=1}
+      ctx.strokeStyle=col["--border"];ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,H);ctx.stroke();
+      ctx.fillStyle=col["--muted"];ctx.font="500 12px "+getComputedStyle(document.body).fontFamily;ctx.textAlign="center";ctx.fillText(LANES[l].n+" · "+LANES[l].k,x+lw/2,H-12)}
+    // beat lines
+    if(run){ctx.strokeStyle=col["--border"];beats.forEach(function(b){var y=hy-(b.t-tn)*speed;if(y>-2&&y<hy){ctx.globalAlpha=b.hi?.9:.4;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.globalAlpha=1}})}
+    // hit line
+    ctx.fillStyle=col["--fg"];ctx.fillRect(0,hy-1.5,W,3);
+    for(l=0;l<4;l++){ctx.strokeStyle=col["--border-2"];ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(l*lw+lw/2,hy,lw*.32,12,0,0,Math.PI*2);ctx.stroke()}
+    // notes
+    if(run)for(var i=0;i<notes.length;i++){var n=notes[i];if(n.j)continue;var y=hy-(n.t-tn)*speed;if(y<-30)break;if(y>H+20)continue;
+      var cx=n.l*lw+lw/2,w=lw*.64;ctx.fillStyle=n.l===0?col["--accent"]:n.l===2?col["--muted"]:col["--fg"];
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(cx-w/2,y-9,w,18,9);else ctx.rect(cx-w/2,y-9,w,18);ctx.fill();
+      if(n.l===3){ctx.fillStyle=col["--accent"];ctx.fillRect(cx-w/2+6,y-2,w-12,4)}}
+    // pops
+    pops=pops.filter(function(p){return pn-p.t<600});pops.forEach(function(p){var a=1-(pn-p.t)/600;ctx.globalAlpha=a;ctx.fillStyle=p.good?col["--accent"]:col["--muted"];
+      ctx.font="800 15px "+getComputedStyle(document.body).fontFamily;ctx.textAlign="center";ctx.fillText(p.txt,p.l*lw+lw/2,hy-30-(1-a)*24);ctx.globalAlpha=1});
+    if(run&&combo>=5){ctx.fillStyle=col["--fg"];ctx.globalAlpha=.12;ctx.font="800 "+Math.min(96,W/6)+"px "+getComputedStyle(document.body).fontFamily;ctx.textAlign="center";ctx.fillText(combo,W/2,H*.42);ctx.globalAlpha=1}
+    if(run&&tn<lead){var c=Math.ceil((lead-tn)/(4*step));ctx.fillStyle=col["--accent"];ctx.font="800 56px "+getComputedStyle(document.body).fontFamily;ctx.textAlign="center";ctx.fillText(c,W/2,H*.4)}
+  }
+  function loop(){
+    if(run){var tn=now();
+      while(bi<beats.length&&beats[bi].t<=tn){if(window.__drumPlay)window.__drumPlay(beats[bi].hi?"clickHi":"click");bi++}
+      for(var i=0;i<notes.length;i++){var n=notes[i];if(n.t-tn>0)break;if(!n.j&&tn-n.t>.16)judge(n,"MISS",0,"M")}
+      if(tn>endT){finish();}
+    }
+    draw();raf=requestAnimationFrame(loop);
+  }
+  function start(){
+    if(window.__drumUnlock)window.__drumUnlock();
+    build();score=0;combo=0;maxC=0;judged=0;cnt={P:0,G:0,O:0,M:0};bi=0;pops=[];hud();readCol();size();
+    over.hidden=true;t0=performance.now()/1000+.15;run=true;window.__gameOn=true;
+    var r=cv.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)document.getElementById("gameBox").scrollIntoView({block:"center",behavior:"smooth"});
+  }
+  function finish(stopped){
+    run=false;window.__gameOn=false;var total=notes.length,acc=judged?((cnt.P*100+cnt.G*70+cnt.O*40)/total):0;
+    var g=acc>=95?"S":acc>=85?"A":acc>=70?"B":acc>=50?"C":"D";
+    var b=best(),sc=Math.round(score),nb=sc>b;if(nb&&!stopped)saveBest(sc);showBest();
+    document.getElementById("gGrade").textContent=stopped?"중단":g;
+    document.getElementById("gSummary").textContent=stopped?"화면을 벗어나 게임을 멈췄습니다.":SONGS[song].name+" · "+sc.toLocaleString("ko-KR")+"점 · 정확도 "+acc.toFixed(1)+"% · 최대 콤보 "+maxC+(nb?" · 최고 기록!":"");
+    document.getElementById("gBreak").innerHTML='<span>PERFECT '+cnt.P+'</span><span>GREAT '+cnt.G+'</span><span>GOOD '+cnt.O+'</span><span>MISS '+cnt.M+'</span>';
+    startCard.hidden=true;resCard.hidden=false;over.hidden=false;
+  }
+  document.querySelectorAll(".g-opt").forEach(function(b){b.addEventListener("click",function(){song=b.getAttribute("data-song");
+    document.querySelectorAll(".g-opt").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});showBest()})});
+  document.getElementById("gStart").addEventListener("click",start);
+  document.getElementById("gAgain").addEventListener("click",function(){resCard.hidden=true;startCard.hidden=false;start()});
+  document.querySelectorAll(".g-pads button").forEach(function(b){b.addEventListener("pointerdown",function(e){e.preventDefault();hit(+b.getAttribute("data-lane"))})});
+  cv.addEventListener("pointerdown",function(e){if(!run)return;var r=cv.getBoundingClientRect();hit(Math.min(3,Math.max(0,Math.floor((e.clientX-r.left)/(r.width/4)))))});
+  var KM={a:0,s:1,d:2,f:2," ":3,j:3};
+  document.addEventListener("keydown",function(e){if(!run||e.repeat||e.metaKey||e.ctrlKey||e.altKey)return;var l=KM[e.key.toLowerCase()];if(l===undefined)return;e.preventDefault();hit(l)});
+  document.addEventListener("visibilitychange",function(){if(document.hidden&&run)finish(true)});
+  addEventListener("resize",function(){size()});
+  var mq=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)");if(mq&&mq.addEventListener)mq.addEventListener("change",readCol);
+  readCol();size();showBest();loop();
+})();
+</script>
+
+</body></html>
